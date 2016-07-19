@@ -115,7 +115,7 @@ The \a millisec timeout can have the following values:
  - \em osErrorTimeoutResource: the mutex could not be obtained in the given time.
  - \em osErrorResource: the mutex could not be obtained when no timeout was specified.
  - \em osErrorParameter: the parameter \a mutex_id is incorrect.
- - \em osErrorISR: \ref osMutexWait cannot be called from interrupt service routines.
+ - \em osErrorISR: cannot be called from interrupt service routines.
 
 \note Cannot be called from \ref CMSIS_RTOS_ISR_Calls "Interrupt Service Routines".
  

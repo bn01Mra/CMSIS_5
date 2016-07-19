@@ -71,12 +71,6 @@ Cannot be called from \ref CMSIS_RTOS_ISR_Calls "Interrupt Service Routines".
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
-\typedef void (*os_timer_func_t) (void *argument)
-\details
-
-*/
-/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/**
 \typedef osThreadId_t
 
 */
@@ -144,6 +138,7 @@ void ThreadGetId_example (void)  {
 \note
 MUST REMAIN UNCHANGED: the function shall be consistent in every CMSIS-RTOS. 
 
+Return the state of the thread identified by parameter \em thread_id.
 
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
@@ -197,7 +192,7 @@ void Thread_1 (void const *arg)  {                         // Thread function
 \fn osPriority_t osThreadGetPriority (osThreadId_t thread_id)
 \details
 \note
-MUST REMAIN UNCHANGED: \b osThreadNew shall be consistent in every CMSIS-RTOS.
+MUST REMAIN UNCHANGED: the function shall be consistent in every CMSIS-RTOS.
 
 Get the priority of an active thread. In case of failure, the value \b osPriorityError is returned.
 
@@ -228,7 +223,7 @@ void Thread_1 (void const *arg)  {                         // Thread function
 \fn osStatus_t osThreadYield (void)
 \details
 \note
-MUST REMAIN UNCHANGED: \b osThreadNew shall be consistent in every CMSIS-RTOS.
+MUST REMAIN UNCHANGED: the function osThreadNew shall be consistent in every CMSIS-RTOS.
 
 Pass control to the next thread that is in state \b READY. If there is no other thread in state \b READY, 
 then the current thread continues execution and no thread switching occurs.
@@ -263,7 +258,7 @@ void Thread_1 (void const *arg)  {                         // Thread function
 \fn osStatus_t osThreadSuspend (osThreadId_t thread_id)
 \details
 \note
-MUST REMAIN UNCHANGED: \b osThreadNew shall be consistent in every CMSIS-RTOS.
+MUST REMAIN UNCHANGED: the function shall be consistent in every CMSIS-RTOS.
 
 Sets the thread identified by parameter \em thread_id into the state \em Suspended (\ref osThreadSuspended).
 The thread is not executed until restarted with the function \ref osThreadResume.
@@ -274,7 +269,7 @@ The thread is not executed until restarted with the function \ref osThreadResume
 \fn osStatus_t osThreadResume (osThreadId_t thread_id)
 \details
 \note
-MUST REMAIN UNCHANGED: \b osThreadNew shall be consistent in every CMSIS-RTOS.
+MUST REMAIN UNCHANGED: the function shall be consistent in every CMSIS-RTOS.
 
 Restart a thread defined by parameter \em thread_id that has been stopped with \ref osThreadSuspend.
 If the \b RUNNING thread has a higher priority, then the thread is put in state \b WAITING.
@@ -287,7 +282,7 @@ If the \b RUNNING thread has a higher priority, then the thread is put in state 
 \fn osStatus_t osThreadDetach (osThreadId_t thread_id)
 \details
 \note
-MUST REMAIN UNCHANGED: \b osThreadNew shall be consistent in every CMSIS-RTOS.
+MUST REMAIN UNCHANGED: the function shall be consistent in every CMSIS-RTOS.
 
 \todo : describe
 
@@ -299,7 +294,7 @@ Cannot be called from \ref CMSIS_RTOS_ISR_Calls "Interrupt Service Routines".
 \fn osStatus_t osThreadJoin (osThreadId_t thread_id, void **exit_ptr)
 \details
 \note
-MUST REMAIN UNCHANGED: \b osThreadNew shall be consistent in every CMSIS-RTOS.
+MUST REMAIN UNCHANGED: the function shall be consistent in every CMSIS-RTOS.
 
 \todo : describe
 
@@ -311,10 +306,9 @@ Cannot be called from \ref CMSIS_RTOS_ISR_Calls "Interrupt Service Routines".
 \fn __NO_RETURN void osThreadExit (void *exit_ptr)
 \details
 \note
-MUST REMAIN UNCHANGED: \b osThreadNew shall be consistent in every CMSIS-RTOS.
+MUST REMAIN UNCHANGED:  the function shall be consistent in every CMSIS-RTOS.
 
 Exit the \b RUNNING thread to an exit point defined by parameter pointer \em exit_ptr.
-\todo __NO_RETURN means what?
 
 \note
 Cannot be called from \ref CMSIS_RTOS_ISR_Calls "Interrupt Service Routines".
@@ -324,7 +318,7 @@ Cannot be called from \ref CMSIS_RTOS_ISR_Calls "Interrupt Service Routines".
 \fn osStatus_t osThreadTerminate (osThreadId_t thread_id)
 \details
 \note
-MUST REMAIN UNCHANGED: \b osThreadNew shall be consistent in every CMSIS-RTOS.
+MUST REMAIN UNCHANGED:  the functionshall be consistent in every CMSIS-RTOS.
 
 Remove the thread function from the active thread list. If the thread is currently RUNNING the execution will stop.
 
