@@ -1,3 +1,6 @@
+/**
+\file 
+*/
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 //  ==== Kernel Control ====
 /** 
@@ -44,7 +47,23 @@ int main (void) {
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \enum osKernelState_t
+\details
 
+Detailed description of the enumeration values:
+
+Enumeration Value   | Description
+--------------------|----------------------------------------------------------------------------------------------
+osKernelInactive 	| Inactive. The kernel is not ready yet. \ref osKernelInitialize needs to be executed successfully.
+osKernelReady 	    | Ready. The kernel is not yet running. \ref osKernelStart transfers the kernel to the running state.
+osKernelRunning 	| Running. The kernel is initialized and running.
+osKernelLocked 	    | Locked. The kernel was locked with \ref osKernelLock. \ref osKernelUnlock unlocks it.
+osKernelSuspended 	| Suspended. The kernel was suspended using \ref osKernelSuspend. \ref osKernelResume returns to normal operation.
+osKernelError 	    | Error. An error occurred. The kernel error handler should have been called in this state.
+osKernelReserved 	| Reserved. Prevents enum down-size compiler optimization. 
+
+*/
+/**
+\var osKernelState_t::osKernelInactive
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
