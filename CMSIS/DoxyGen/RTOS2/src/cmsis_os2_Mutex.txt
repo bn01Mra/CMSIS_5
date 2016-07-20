@@ -90,8 +90,9 @@ Create and initialize a Mutex object.
 \code{.c}
 #include "cmsis_os2.h"
   
+osMutexId_t mutex_id;  
+  
 void CreateMutex (void)  {
-osMutexId_t mutex_id;   
  
   mutex_id = osMutexNew(NULL);
   if (mutex_id != NULL)  {
