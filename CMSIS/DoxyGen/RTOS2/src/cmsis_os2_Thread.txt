@@ -1,4 +1,3 @@
-
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 //  ==== Thread Management ====
 /** 
@@ -411,3 +410,20 @@ Reference:
 */
 /// @}
 
+// these struct members must stay outside the group to avoid double entries in documentation
+/**
+\var osThreadAttr_t::attr_bits
+\details
+
+*/
+/**
+\var osThreadAttr_t::reserved
+\details
+
+*/
+/**
+\var osPriority_t::osPriorityNone 
+\ingroup CMSIS_RTOS_TreadMgmt
+\details
+
+*/

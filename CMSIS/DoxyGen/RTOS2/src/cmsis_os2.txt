@@ -26,11 +26,11 @@ CMSIS-RTOS in ARM::CMSIS Pack
 -----------------------------
 
 The following files relevant to CMSIS-RTOS are present in the <b>ARM::CMSIS</b> Pack directories:
-|File/Folder                  | Content                                                                |
-|-----------------------------|------------------------------------------------------------------------|
-|\b CMSIS/Documentation/RTOS2 | This documentation                                                     |
-|\b CMSIS/Documentation/RTOS  | CMSIS-RTOS API v1 documentation                                 |
-|\b CMSIS/RTOS2/Template      | \ref cmsis_os_h                                                        |
+File/Folder                  | Content                                                                
+-----------------------------|------------------------------------------------------------------------
+\b CMSIS/Documentation/RTOS2 | This documentation                                                     
+\b CMSIS/Documentation/RTOS  | CMSIS-RTOS API v1 documentation                                 
+\b CMSIS/RTOS2/Template      | \ref cmsis_os_h                                                 
 */
 
 

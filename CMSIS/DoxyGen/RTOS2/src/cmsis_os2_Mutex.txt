@@ -1,4 +1,5 @@
-
+// 
+// close group struct osMutexAttr_t
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 //  ==== Mutex Management ====
 /** 
@@ -74,7 +75,9 @@ osMutexRelease(uart_mutex_id);
 \struct osMutexAttr_t
 \details
 
+
 */
+
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \fn osMutexId_t osMutexNew (const osMutexAttr_t *attr)
@@ -173,7 +176,7 @@ osStatus_t status;
 /**
 \fn osThreadId_t osMutexGetOwner (osMutexId_t mutex_id)
 \details
-Returns the /ref osThreadId_t of the thread that acquired a mutex. 
+Returns the \ref osThreadId_t of the thread that acquired a mutex. 
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
@@ -182,7 +185,7 @@ Returns the /ref osThreadId_t of the thread that acquired a mutex.
 Delete a Mutex object.  The function releases internal memory obtained for Mutex handling.  After this call the \a mutex_id is no longer valid and cannot be
 used. The Mutex may be created again using the function \ref osMutexNew.
 
-<b>\ref CMSIS_RTOS_Status</b>\n
+<b>\ref CMSIS_RTOS_Status</b>
  - \em osOK: the mutex object has been deleted.
  - \em osErrorISR: \ref osMutexDelete cannot be called from interrupt service routines.
  - \em osErrorResource: all tokens have already been released.
@@ -208,5 +211,46 @@ osStatus_t status;
 }
 \endcode
 */
-*/
 /// @}
+
+// these struct members must stay outside the group to avoid double entries in documentation
+/**
+\var osMutexAttr_t::attr_bits
+\details
+The following predefined bit masks can be assigned to set options for a mutex object.  
+
+Bit Mask                    |  Description
+:---------------------------|:------------------
+\token{osMutexRecursive}    | Mutex is recursive. The same thread can consume a mutex multiple times without locking itself.
+\token{osMutexPrioInherit}  | Priority inheritance protocol. While a thread owns this mutex it cannot be preempted by a higher priority thread to avoid starvation.
+\token{osMutexRobust}       | Robust mutex. Notify threads that acquire a mutex if the previous owner was terminated.
+
+*/
+/**
+\var osMutexAttr_t::cb_mem
+\details
+Pointer to a memory location for the mutex object. This can optionally be used for custom memory management systems. 
+Specify NULL to use the kernel memory management.
+*/
+/**
+\var osMutexAttr_t::cb_size
+\details
+The size of the memory block passed with \ref cb_mem. Must be the size of a mutex object or larger.
+*/
+/**
+\var osMutexAttr_t::name
+\details
+String with a human readable name of the mutex object.
+
+\code
+osMutexId_t mid_Thread_Mutex;               // mutex id
+ 
+const osMutexAttr_t Thread_Mutex_attr = {
+  "myThreadMutex",
+  osMutexRecursive | osMutexPrioInherit,    // attr_bits
+  NULL,                                     // memory for control block   
+  NULL                                      // size for control block
+  };
+mid_Mutex = osMutexNew (&Thread_Mutex_attr);
+\endcode
+*/
