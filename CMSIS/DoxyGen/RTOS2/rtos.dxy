@@ -205,7 +205,11 @@ TAB_SIZE               = 8
 # will result in a user-defined paragraph with heading "Side Effects:". 
 # You can put \n's in the value part of an alias to insert newlines.
 
-ALIASES                = "token{1}=<span class=\"XML-Token\">\1</span>"
+ALIASES                = "token{1}=<span class=\"XML-Token\">\1</span>" \
+                         "enddiv=</div>" \
+                         "div{1}=<hr><div class=\"\1\">" \
+                         "func{1}=<kbd>\1</kbd> <br><br>" \
+                         "func{2}=<kbd>\1 \ref \2</kbd> <br>"
 
 # This tag can be used to specify a number of word-keyword mappings (TCL only). 
 # A mapping has the form "name=value". For example adding 
@@ -980,7 +984,8 @@ HTML_EXTRA_STYLESHEET  = ../Doxygen_Templates/cmsis.css
 
 HTML_EXTRA_FILES       = ../Doxygen_Templates/tabs.css \
                          ../Doxygen_Templates/tab_topnav.png \
-                         ../Doxygen_Templates/printComponentTabs.js
+                         ../Doxygen_Templates/printComponentTabs.js \
+                         ../Doxygen_Templates/search.css
 
 # The HTML_COLORSTYLE_HUE tag controls the color of the HTML output. 
 # Doxygen will adjust the colors in the style sheet and background images 

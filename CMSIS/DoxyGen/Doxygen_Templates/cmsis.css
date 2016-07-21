@@ -141,7 +141,15 @@ span.h2
 	font-weight: bold;
 }
 
+div.new
+{
+	background-color:#ccffcc; /* light green */
+}
 
+div.mod
+{
+	background-color:#ffcccc;  /* light red */
+}
 
 /* @group Heading Levels */
 
