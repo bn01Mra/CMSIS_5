@@ -67,6 +67,7 @@ Cannot be called from \ref CMSIS_RTOS_ISR_Calls "Interrupt Service Routines".
 \typedef void *(*os_thread_func_t) (void *argument)
 \details
 
+
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
@@ -138,6 +139,7 @@ void ThreadGetId_example (void)  {
 MUST REMAIN UNCHANGED: the function shall be consistent in every CMSIS-RTOS. 
 
 Return the state of the thread identified by parameter \em thread_id.
+See \ref osThreadState_t for possible states.
 
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
@@ -250,6 +252,15 @@ void Thread_1 (void const *arg)  {                         // Thread function
 /**
 \fn osStatus_t osThreadAbortWait (osThreadId_t thread_id)
 \details
+Forces a thread in WAITING stated, specified with \em thread_id, to continue operation. 
+Functions that will put a thread into WAITING state are:
+\ref osEventFlagsWait and \ref osThreadFlagsWait,
+\ref osDelay and \ref osDelayUntil,
+\ref osMutexAcquire and \ref osSemaphoreAcquire,
+\ref osMessageQueueGet,
+\ref osThreadJoin.
+
+The return value of the waiting function is unspecified.
 
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
@@ -280,6 +291,9 @@ If the \b RUNNING thread has a higher priority, then the thread is put in state 
 /**
 \fn osStatus_t osThreadDetach (osThreadId_t thread_id)
 \details
+Changes the attribute of a thread specified in \em thread_id to \ref osThreadDetached. Detached threads are not joinable with \ref osThreadJoin. 
+When a detached thread is terminated all resources are returned to the system. The behaviour of \ref osThreadDetach on an already detached thread is undefined.
+
 \note
 MUST REMAIN UNCHANGED: the function shall be consistent in every CMSIS-RTOS.
 
@@ -292,13 +306,41 @@ Cannot be called from \ref CMSIS_RTOS_ISR_Calls "Interrupt Service Routines".
 /**
 \fn osStatus_t osThreadJoin (osThreadId_t thread_id, void **exit_ptr)
 \details
+Waits for the thread specified by \em thread_id to terminate. 
+If that thread has already terminated, then \ref osThreadJoin returns immediately.  
+The thread referred to by thread_id must joinable. By default threads are created with the attribute \ref osThreadJoinable. The thread may not have been detached by \ref osThreadDetach.
+
 \note
 MUST REMAIN UNCHANGED: the function shall be consistent in every CMSIS-RTOS.
 
-\todo : describe
-
 \note
 Cannot be called from \ref CMSIS_RTOS_ISR_Calls "Interrupt Service Routines".
+
+
+\b Example:
+\code
+#include "cmsis_os2.h"
+
+void *worker(void *arg)
+{
+  .. // work work work
+  return 0;
+}
+
+
+int join_threads(void)
+{ 
+    osThreadId_t th1, th2;
+	
+    th1 = osThreadNew(worker, &param, NULL);
+    th2 = osThreadNew(worker, &param, NULL);
+
+    (void) osThreadJoin(th1, NULL);
+    (void) osThreadJoin(th2, NULL);
+    return 0;
+}
+\endcode
+
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
@@ -317,7 +359,7 @@ Cannot be called from \ref CMSIS_RTOS_ISR_Calls "Interrupt Service Routines".
 \fn osStatus_t osThreadTerminate (osThreadId_t thread_id)
 \details
 \note
-MUST REMAIN UNCHANGED:  the functionshall be consistent in every CMSIS-RTOS.
+MUST REMAIN UNCHANGED: the function shall be consistent in every CMSIS-RTOS.
 
 Remove the thread function from the active thread list. If the thread is currently RUNNING the execution will stop.
 
@@ -347,68 +389,6 @@ void ThreadTerminate_example (void) {
 */
 /// @}
 
-
-/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-//  ==== Thread Flags Management ====
-/** 
-\addtogroup CMSIS_RTOS_ThreadFlagsMgmt Thread Flags Management Functions
-\ingroup CMSIS_RTOS
-\brief Lorem ipsum
-\details
-Lorem ipsum
-
-@{
-*/
-/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/** \def osFlagsWaitAny
-Wait forever timeout value. 
-
-Reference: 
- - \ref osEventFlagsWait
- - \ref osThreadFlagsWait
-*/
-/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/** \def osFlagsWaitAll
-
-Reference: 
- - \ref osEventFlagsWait
- - \ref osThreadFlagsWait
-*/
-/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/** \def osFlagsAutoClear
-
-Reference: 
- - \ref osEventFlagsWait
- - \ref osThreadFlagsWait
-*/
-/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/** \fn int32_t osThreadFlagsSet (osThreadId_t thread_id, int32_t flags ) 	
-<b>Code Example</b>
-\code
-\endcode
-*/
-/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/** \fn osStatus osThreadFlagsClear (osThreadId thread_id, int32_t flags);
- 
-<b>Code Example</b>
-\code
-\endcode
-*/
-/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/** \fn int32_t osThreadFlagsGet (osThreadId thread_id);
- 
-<b>Code Example</b>
-\code
-\endcode
-*/
-/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/** \fn int32_t osThreadFlagsWait (int32_t flags, uint32_t options, uint32_t millisec);
-
-<b>Code Example</b>
-\code
-\endcode
-*/
-/// @}
 
 // these struct members must stay outside the group to avoid double entries in documentation
 /**

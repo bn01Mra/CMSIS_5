@@ -39,13 +39,17 @@ int main (void) {
 /**
 \struct osVersion_t
 \details
+Identifies the underlying RTOS kernel and API version number. 
+The Version is represented in a combined decimal number in the format: major.minor.rev: mmnnnrrrr 
+
+Use \ref osKernelGetInfo to retrieve the version numbers
 
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \enum osKernelState_t
 \details
-
+State of the Kernel. Can be retrieved by \ref osKernelGetState.
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
@@ -57,7 +61,23 @@ int main (void) {
 /**
 \fn osStatus_t osKernelGetInfo (osVersion_t *version, char *id_buf, uint32_t id_size)
 \details
+Retrieve API and kernel version of the underlying RTOS kernel and a human readable identifier string of the kernel.
 
+\b Example
+\code
+void info (void) {
+  char infobuf[100];
+  osVersion_t osv;
+  osStatus_t status;
+	
+  status = osKernelGetInfo(&osv, infobuf, 100);
+  if(status == osOK) {
+    printf("Kernel Information: %s\r\n", infobuf);
+		printf("Kernel Version    : %d\r\n", osv.kernel);
+		printf("Kernel API Version: %d\r\n", osv.api);
+	}		
+}
+\endcode
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
