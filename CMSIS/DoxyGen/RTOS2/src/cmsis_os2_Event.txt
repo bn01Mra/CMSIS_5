@@ -7,32 +7,30 @@
 \ingroup CMSIS_RTOS
 \brief Synchronize threads using flags.
 \details 
-Signals are used to trigger execution states between threads. The signal management functions in CMSIS-RTOS allow you to
-control or wait for signal flags. Each signal has up to 31 signal flags (int32_t flags provides 31 bits).
+Events are used to trigger execution states between threads. The event flag management functions in CMSIS-RTOS allow you to control or wait for event flags. Each signal has up to 31 event flags (int32_t flags provides 31 bits).
 
 A thread
-- can wait for signals to be set (using \ref osSignalWait). Using this function, it enters the
-  \ref ThreadStates "WAITING" state. The \ref osSignalWait parameter \a signals defines the signals that are required to put
-  the thread back into \b READY state.
+- can wait for event flags to be set (using \ref osEventFlagsGet). Using this function, it enters the
+  \ref ThreadStates "WAITING" state. The \ref osEventFlagsGet parameter \a flags defines the signals that are required to put the thread back into \b READY state.
 - may set one or more flags in any other given thread (using \ref osEventFlagSet).
 - may clear its own signals or the signals of other threads (using \ref osEventFlagClear).
 
 When a thread wakes up and resumes execution, its signal flags are automatically cleared. 
 
-Working with Signals
+Working with Events
 --------------------
-Here is a simple example that shows how two thread can communicate with each others using signals:
+Here is a simple example that shows how two thread can communicate with each others using event flags:
 
-\image html simple_signal.png "Simple signal event communication"
+\image html simple_signal.png "Simple event communication"
 
 The following steps are required to use signals:
--# In the thread that is supposed to send  a signal with id sig1_id, call the wait function:
+-# In the thread that is supposed to send  a event with id sig1_id, call the wait function:
 \code
-osSignalWait (sig1_id, 0x0001); // wait forever for the signal 0x0001
+osEventFlagSet (sig1_id, 0x0001); // 
 \endcode
--# In another thread (or threads) that are supposed to be woken up call:
+-# In another thread (or threads) that are supposed wait for the event:
 \code
-osEventFlagsWait (sig1_id, 0x0001, NULL, osWaitForever);    // set the signal 0x0001 for thread tid_thread1
+osEventFlagsGet (sig1_id, 0x0001, NULL, osWaitForever);    // set the signal 0x0001 for thread tid_thread1
 osDelay (1000);                       // wait for 1 second
 \endcode
 
@@ -54,7 +52,7 @@ osDelay (1000);                       // wait for 1 second
 /**
 \fn osEventFlagsId_t osEventFlagsNew (const osEventFlagsAttr_t *attr)
 \details
-Create and initialize a Event Flag object that is used to send signals accross threads. 
+Create and initialize a Event Flag object that is used to send events accross threads. 
 
 <b>Code Example</b>
 \code{.c}
@@ -75,7 +73,7 @@ void CreateEvent (void)  {
 /**
 \fn int32_t osEventFlagsSet (osEventFlagsId_t ef_id, int32_t flags)
 \details
-Set the signal flags in an event flags object. This function may be used also within interrupt service routines. 
+Set the event flags in an event flags object. This function may be used also within interrupt service routines. 
 All threads waiting for the flag set will be notified to resume from WAITING state.
 
 \note \ref CMSIS_RTOS_ISR_Calls "Interrupt Service Routines" can call this function.
@@ -97,19 +95,19 @@ static void EX_Signal_1 (void)  {
 /**
 \fn int32_t osEventFlagsClear (osEventFlagsId_t ef_id, int32_t flags)
 \details
-Clear the signal flags of an event flags object.
+Clear the event flags of an event flags object.
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \fn int32_t osEventFlagsGet (osEventFlagsId_t ef_id)
 \details
-Return the signal flags of an event flags object.
+Return the event flags currently set in an event flags object.
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \fn int32_t osEventFlagsWait (osEventFlagsId_t ef_id, int32_t flags, uint32_t options, uint32_t millisec)
 \details
-Suspend the execution of the current \b RUNNING thread until any or all specified signal flags with the parameter \a signals are set.
+Suspend the execution of the current \b RUNNING thread until any or all specified event flags with the parameter \a flags are set.
 The /em options parameter specifies the wait condition. 
 
 |Option              |													     |
@@ -120,7 +118,7 @@ The /em options parameter specifies the wait condition.
 
 If osFlagsAutoClear is not set in the options /ref osEventFlagClear can be used to clear flags manually.
 
-When these signal flags are already set, the function returns instantly. Otherwise the thread is put into the state \b WAITING. 
+When these event flags are already set, the function returns instantly. Otherwise the thread is put into the state \b WAITING. 
 
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
