@@ -196,7 +196,7 @@ SEPARATE_MEMBER_PAGES  = NO
 # The TAB_SIZE tag can be used to set the number of spaces in a tab. 
 # Doxygen uses this value to replace tabs by spaces in code fragments.
 
-TAB_SIZE               = 8
+TAB_SIZE               = 9
 
 # This tag can be used to specify a number of aliases that acts 
 # as commands in the documentation. An alias has the form "name=value". 
@@ -208,8 +208,9 @@ TAB_SIZE               = 8
 ALIASES                = "token{1}=<span class=\"XML-Token\">\1</span>" \
                          "enddiv=</div>" \
                          "div{1}=<hr><div class=\"\1\">" \
-                         "func{1}=<kbd>\1</kbd> <br><br>" \
-                         "func{2}=<kbd>\1 \ref \2</kbd> <br>"
+                         "func{1}=<kbd>\1</kbd> <br>" \
+                         "copybrief{1}=<br> \copybrief \1 <br>" \
+                         "none=\em none <br>"
 
 # This tag can be used to specify a number of word-keyword mappings (TCL only). 
 # A mapping has the form "name=value". For example adding 
