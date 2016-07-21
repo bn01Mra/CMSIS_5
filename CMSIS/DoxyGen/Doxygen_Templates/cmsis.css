@@ -148,6 +148,11 @@ div.new
 
 div.mod
 {
+	background-color:#ffe6cc;  /* light amber */
+}
+
+div.del
+{
 	background-color:#ffcccc;  /* light red */
 }
 

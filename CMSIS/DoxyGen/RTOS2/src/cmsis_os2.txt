@@ -235,12 +235,17 @@ Overview of all CMSIS-RTOS C API v2 functions.
    - \ref osThreadTerminate : \copybrief osThreadTerminate
    - \ref osThreadYield : \copybrief osThreadYield
 
- - \ref CMSIS_RTOS_ThreadFlagsMgmt
-   - \ref osFlagsAutoClear : \copybrief osFlagsAutoClear
-   - \ref osFlagsWaitAll : \copybrief osFlagsWaitAll
-   - \ref osFlagsWaitAny : \copybrief osFlagsWaitAny
-   - \ref osThreadFlagsSet : \copybrief osThreadFlagsSet
-   - \ref osThreadFlagsWait : \copybrief osThreadFlagsWait
+ - \ref CMSIS_RTOS_Wait
+   - \ref osWaitForever : \copybrief osWaitForever
+   - \ref osDelay : \copybrief osDelay
+   - \ref osDelayUntil : \copybrief osDelayUntil
+
+ - \ref CMSIS_RTOS_TimerMgmt
+   - \ref osTimerDelete : \copybrief osTimerDelete
+   - \ref osTimerIsRunning : \copybrief osTimerIsRunning
+   - \ref osTimerNew : \copybrief osTimerNew
+   - \ref osTimerStart : \copybrief osTimerStart
+   - \ref osTimerStop : \copybrief osTimerStop
 
  - \ref CMSIS_RTOS_EventFlags
    - \ref osEventFlagsNew : \copybrief osEventFlagsNew
@@ -249,6 +254,24 @@ Overview of all CMSIS-RTOS C API v2 functions.
    - \ref osEventFlagsClear : \copybrief osEventFlagsClear
    - \ref osEventFlagsGet : \copybrief osEventFlagsGet
    - \ref osEventFlagsWait : \copybrief osEventFlagsWait
+
+ - \ref CMSIS_RTOS_ThreadFlagsMgmt
+   - \ref osFlagsAutoClear : \copybrief osFlagsAutoClear
+   - \ref osFlagsWaitAll : \copybrief osFlagsWaitAll
+   - \ref osFlagsWaitAny : \copybrief osFlagsWaitAny
+   - \ref osThreadFlagsSet : \copybrief osThreadFlagsSet
+   - \ref osThreadFlagsWait : \copybrief osThreadFlagsWait
+
+ - \ref CMSIS_RTOS_Message
+   - \ref osMessageQueueDelete : \copybrief osMessageQueueDelete
+   - \ref osMessageQueueGet : \copybrief osMessageQueueGet
+   - \ref osMessageQueueGetCapacity : \copybrief osMessageQueueGetCapacity
+   - \ref osMessageQueueGetCount : \copybrief osMessageQueueGetCount
+   - \ref osMessageQueueGetMsgSize : \copybrief osMessageQueueGetMsgSize
+   - \ref osMessageQueueGetSpace : \copybrief osMessageQueueGetSpace
+   - \ref osMessageQueueNew : \copybrief osMessageQueueNew
+   - \ref osMessageQueuePut : \copybrief osMessageQueuePut
+   - \ref osMessageQueueReset : \copybrief osMessageQueueReset
 
  - \ref CMSIS_RTOS_PoolMgmt
    - \ref osMemoryPoolAlloc : \copybrief osMemoryPoolAlloc
@@ -267,35 +290,12 @@ Overview of all CMSIS-RTOS C API v2 functions.
    - \ref osMutexNew : \copybrief osMutexNew
    - \ref osMutexRelease : \copybrief osMutexRelease
 
- - \ref CMSIS_RTOS_Message
-   - \ref osMessageQueueDelete : \copybrief osMessageQueueDelete
-   - \ref osMessageQueueGet : \copybrief osMessageQueueGet
-   - \ref osMessageQueueGetCapacity : \copybrief osMessageQueueGetCapacity
-   - \ref osMessageQueueGetCount : \copybrief osMessageQueueGetCount
-   - \ref osMessageQueueGetMsgSize : \copybrief osMessageQueueGetMsgSize
-   - \ref osMessageQueueGetSpace : \copybrief osMessageQueueGetSpace
-   - \ref osMessageQueueNew : \copybrief osMessageQueueNew
-   - \ref osMessageQueuePut : \copybrief osMessageQueuePut
-   - \ref osMessageQueueReset : \copybrief osMessageQueueReset
-
  - \ref CMSIS_RTOS_SemaphoreMgmt
    - \ref osSemaphoreAcquire : \copybrief osSemaphoreAcquire
    - \ref osSemaphoreDelete : \copybrief osSemaphoreDelete
    - \ref osSemaphoreGetCount : \copybrief osSemaphoreGetCount
    - \ref osSemaphoreNew : \copybrief osSemaphoreNew
    - \ref osSemaphoreRelease : \copybrief osSemaphoreRelease
-
- - \ref CMSIS_RTOS_TimerMgmt
-   - \ref osTimerDelete : \copybrief osTimerDelete
-   - \ref osTimerIsRunning : \copybrief osTimerIsRunning
-   - \ref osTimerNew : \copybrief osTimerNew
-   - \ref osTimerStart : \copybrief osTimerStart
-   - \ref osTimerStop : \copybrief osTimerStop
-
- - \ref CMSIS_RTOS_Wait
-   - \ref osWaitForever : \copybrief osWaitForever
-   - \ref osDelay : \copybrief osDelay
-   - \ref osDelayUntil : \copybrief osDelayUntil
 */
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
@@ -428,7 +428,13 @@ Test Result: PASSED
 /** 
 \addtogroup CMSIS_RTOS CMSIS-RTOS API v2
 \brief This section describes the CMSIS-RTOS API v2. 
-\details The CMSIS-RTOS is a generic API layer that interfaces to an existing RTOS kernel.
+\details 
+The CMSIS-RTOS is a generic API layer that interfaces to an existing RTOS kernel.
+
+The following sections provide descriptions for the API layer:
+
+ - \ref CMSIS_RTOS_KernelCtrl : \copybrief CMSIS_RTOS_KernelCtrl
+ - \ref CMSIS_RTOS_Status : \copybrief CMSIS_RTOS_Status
 
 */
 
