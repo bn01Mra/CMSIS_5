@@ -210,7 +210,7 @@ ALIASES                = "token{1}=<span class=\"XML-Token\">\1</span>" \
                          "enddiv= </div>" \
                          "func{1}=<kbd>\1</kbd> <br>" \
                          "copybrief{1}=<br> \copybrief \1 <br>" \
-                         "none=\em none <br>" 
+                         "none=\em none <br>"
 
 # This tag can be used to specify a number of word-keyword mappings (TCL only). 
 # A mapping has the form "name=value". For example adding 
@@ -686,13 +686,14 @@ INPUT                  = . \
                          ./src/cmsis_os2_Kernel.txt \
                          ./src/cmsis_os2_Thread.txt \
                          ./src/cmsis_os2_Wait.txt \
-                         ./src/cmsis_os2_Timer.txt \
-                         ./src/cmsis_os2_Event.txt \
                          ./src/cmsis_os2_ThreadFlags.txt \
-                         ./src/cmsis_os2_Message.txt \
-                         ./src/cmsis_os2_MemPool.txt \
+                         ./src/cmsis_os2_Event.txt \
                          ./src/cmsis_os2_Mutex.txt \
                          ./src/cmsis_os2_Sema.txt \
+                         ./src/cmsis_os2_Timer.txt \
+                         ./src/cmsis_os2_MemPool.txt \
+                         ./src/cmsis_os2_Message.txt \
+                         ./src/cmsis_os2_Status.txt \
                          ./src/cmsis_os2_Migration.txt
 
 # This tag can be used to specify the character encoding of the source files 
@@ -785,7 +786,9 @@ EXCLUDE_SYMBOLS        =
 # directories that contain example code fragments that are included (see 
 # the \include command).
 
-EXAMPLE_PATH           = ..\..\RTOS2
+EXAMPLE_PATH           = ../../RTOS2/Include \
+                         ../../RTOS2 \
+                         ../../RTOS2/Template
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the 
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp 

@@ -394,16 +394,41 @@ void ThreadTerminate_example (void) {
 /**
 \var osThreadAttr_t::attr_bits
 \details
+The following predefined bit masks can be assigned to set options for a thread object.
 
-*/
-/**
+Bit Mask                |   Description
+:-----------------------|:-----------------------------------------
+osThreadJoinable        | Thread is created in a joinable state (default).
+osThreadDettached       | Thread is created in a detached state.
+
+\var osThreadAttr_t::cb_mem
+\details
+Pointer to a memory location for the thread object. This can optionally be used for custom memory management systems. 
+Specifytoken{NULL} to use the kernel memory management.
+
+\var osThreadAttr_t::cb_size
+\details
+The size of the memory block passed with \ref cb_mem. Must be the size of a thread object or larger.
+
+\var osThreadAttr_t::name
+\details
+String with a human readable name of the thread object.
+
+\var osThreadAttr_t::priority
+\details
+Specifies the initial thread priority with a value from #osPriority_t.
+
 \var osThreadAttr_t::reserved
 \details
+Reserved for future use. Must be \token{0}.
 
-*/
-/**
-\var osPriority_t::osPriorityNone 
-\ingroup CMSIS_RTOS_TreadMgmt
+\var osThreadAttr_t::stack_mem
 \details
+Pointer to a memory location for the thread stack. This can optionally be used for custom memory management systems. 
+Specify \token{NULL} to use the kernel memory management.
+
+\var osThreadAttr_t::stack_mem
+\details
+The size of the stack specified by \ref stack_mem in Bytes.
 
 */

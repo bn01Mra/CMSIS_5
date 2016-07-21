@@ -30,7 +30,7 @@ File/Folder                  | Content
 -----------------------------|------------------------------------------------------------------------
 \b CMSIS/Documentation/RTOS2 | This documentation                                                     
 \b CMSIS/Documentation/RTOS  | CMSIS-RTOS API v1 documentation                                 
-\b CMSIS/RTOS2/Template      | \ref cmsis_os_h                                                 
+\b CMSIS/RTOS2/Template      | \ref cmsis_os2_h                                                 
 */
 
 
@@ -94,66 +94,6 @@ File/Folder                  | Content
       <td>Preview Release.</td>
     </tr>
 </table>
-*/
-
-
-/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/**
-\page usingOS Using a CMSIS-RTOS Implementation
-
-A CMSIS-RTOS implementation is typically provided as a library. To add the RTOS functionality to an existing CMSIS-based
-application, the RTOS library (and typically a configuration file) needs to be added. The available functionality of the
-RTOS library is defined in the header file \b cmsis_os.h that is specific for each CMSIS-RTOS implementation.
-
-\image html "CMSIS_RTOS_Files.png" "CMSIS-RTOS File Structure"
-
-Depending on the CMSIS-RTOS implementation, execution may start with the \b main function as the first thread. This has the
-benefit that an application programmer may use other middleware libraries that create threads internally, but the remaining
-part of the user application just uses the \b main thread. Therefore, the usage of the RTOS can be invisible to the
-application programmer, but libraries can use CMSIS-RTOS features.
-
-Once the files are added to a project, the user can start working with the CMSIS-RTOS functions. A code example is provided
-below:
- 
-<b>Code Example</b>
-\code
-#include "cmsis_os.h"                            // CMSIS-RTOS header file
- 
-void job1 (void const *argument)  {              // thread function 'job1'
-  while (1)  {
-      :                                          // execute some code
-    osDelay (10);                                // delay execution for 10 milliseconds
-  }
-}
- 
-osThreadDef(job1, osPriorityAboveNormal, 1, 0);  // define job1 as thread function
- 
-void job2 (void const *argument)  {              // thread function 'job2'
-  osThreadCreate(osThread(job1),NULL);           // create job1 thread
-  while (1)   {
-    :                                            // execute some code
-  }
-}
- 
-osThreadDef(job2, osPriorityNormal, 1, 0);       // define job2 as thread function
- 
-void job3 (void const *argument)  {              // thread function 'job3'
-  while (1)   {
-      :                                          // execute some code
-    osDelay (20);                                // delay execution for 20 milliseconds
-  }
-}
- 
-osThreadDef(job3, osPriorityNormal, 1, 0);       // define job3 as thread function
- 
-int main (void) {                                // program execution starts here
-  osKernelInitialize ();                         // initialize RTOS kernel
-    :                                            // setup and initialize peripherals
-  osThreadCreate (osThread(job2));
-  osThreadCreate (osThread(job3));
-  osKernelStart ();                              // start kernel with job2 execution
-}
-\endcode
 */
 
 
@@ -308,13 +248,13 @@ Coming soon
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
-\page cmsis_os_h Header File Template: cmsis_os.h
+\page cmsis_os2_h Header File Template: cmsis_os2.h
 
-The file \b cmsis_os.h is a template header file for a CMSIS-RTOS compliant Real-Time Operating System (RTOS).
-Each RTOS that is compliant with CMSIS-RTOS shall provide a specific \b cmsis_os.h header file that represents
+The file \b cmsis_os2.h is a template header file for a CMSIS-RTOS compliant Real-Time Operating System (RTOS).
+Each RTOS that is compliant with CMSIS-RTOS shall provide a specific \b cmsis_os2.h header file that represents
 its implementation.
 
-The file cmsis_os.h contains:
+The file cmsis_os2.h contains:
  - CMSIS-RTOS API function definitions
  - struct definitions for parameters and return types
  - status and priority values used by CMSIS-RTOS API functions
@@ -341,16 +281,15 @@ file that is used throughout a project as shown below:
 
 <i>Header File</i>
 \code
-#include <cmsis_os.h>                                         // CMSIS RTOS header file
+#include <cmsis_os2.h>                                         // CMSIS RTOS header file
 
 // Thread definition
-extern void thread_sample (void const *argument);             // function prototype
-osThreadDef (thread_sample, osPriorityBelowNormal, 1, 100);
 
 // Pool definition
-osPoolDef(MyPool, 10, long);
+
 \endcode
 
+\todo add the code for pool and thread creation.
 
 This header file defines all objects when included in a C/C++ source file. When <b>\#define osObjectsExternal</b> is
 present before the header file, the objects are defined as external symbols. A single consistent header file can therefore be
@@ -366,14 +305,46 @@ used throughout the whole project.
 #include "osObjects.h"     // Reference to the CMSIS-RTOS objects
 \endcode
 
-<b>Header file %cmsis_os.h</b>
+<b>Header file %cmsis_os2.h</b>
 
-\include Template/cmsis_os.h
+\include cmsis_os2.h
 */
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
+\page rtx5_impl RTX5 Implementation
+
+The following chapters guide you towards implementing the CMSIS-RTOS RTX:
+ - \subpage theory_op
+ - \subpage cre_rtx_proj
+ - \subpage config_rtx
+*/
+
+/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
+/**
+\page theory_op Theory of Operation
+
+*/
+
+/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
+/**
+\page cre_rtx_proj Create an RTX Project
+
+*/
+
+/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
+/**
+\page config_rtx Configure RTX
+
+*/
+
+
+/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
+/**
 \page rtosValidation RTOS Validation
+
+\note
+The test suite is available only for RTOS v1.
 
 ARM offers a <a class=el href="http://www.keil.com/pack" target="_blank">Software Pack</a> for the CMSIS-RTOS Validation.
 The <b>ARM::CMSIS-RTOS_Validation</b> Pack contains the following:
@@ -424,36 +395,11 @@ Test Result: PASSED
 */
 
 /* ========================================================================================================================== */
-// Reference 
+// Group creation for Reference 
 /** 
 \addtogroup CMSIS_RTOS CMSIS-RTOS API v2
 \brief This section describes the CMSIS-RTOS API v2. 
 \details 
 The CMSIS-RTOS is a generic API layer that interfaces to an existing RTOS kernel.
 
-The following sections provide descriptions for the API layer:
-
- - \ref CMSIS_RTOS_KernelCtrl : \copybrief CMSIS_RTOS_KernelCtrl
- - \ref CMSIS_RTOS_Status : \copybrief CMSIS_RTOS_Status
-
 */
-
-/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-// ==== Status and Error Codes ====
-/**
-\addtogroup CMSIS_RTOS_Status Status and Error Codes
-\ingroup CMSIS_RTOS
-\brief Status and Error Codes returned by CMSIS-RTOS API functions.
-\details The Status and Error Codes section lists all the return values that the CMSIS-RTOS functions will return.
-@{
-*/
-/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/**
-\typedef osStatus_t
-\details
-The \b osStatus_t enumeration defines the event status and error codes that are returned by the CMSIS-RTOS functions.
-*/
-/// @} 
-
-
-
