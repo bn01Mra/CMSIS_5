@@ -5,7 +5,7 @@
 /** 
 \addtogroup CMSIS_RTOS_EventFlags Event Flag Objects
 \ingroup CMSIS_RTOS
-\brief Synchronize threads using flags.
+\brief Create events using flags.
 \details 
 Events are used to trigger execution states between threads. The event flag management functions in CMSIS-RTOS allow you to control or wait for event flags. Each signal has up to 31 event flags (int32_t flags provides 31 bits).
 
