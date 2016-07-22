@@ -4,16 +4,16 @@
 
 This section lists all new API functions along with the differences to the RTOS v1 functionality.
 
-The list is sorted alphabetically for RTOSv2 function name and is structured the following way:
+The list is sorted alphabetically by RTOSv2 function names and is structured the following way:
 <hr>
-for RTOS v2 : <kbd>RTOS version 2 function</kbd> \n
-for RTOS v1 : <kbd>RTOS version 1 function</kbd> \n
+\token{for RTOS v2} : \func{RTOS version 2 function}
+\token{for RTOS v1} : \func{RTOS version 1 function}
  
 Brief description of new function. \n
 Description of the difference.
 
 \div{new} New functions have a green background. \enddiv 
-\div{mod} Modified or replacing functions have an amber background. \enddiv 
+\div{mod} Modifying or replacing functions have an amber background. \enddiv 
 \div{del} Deprecated functions without replacement have a red background. \enddiv 
 
 
@@ -33,7 +33,7 @@ New function #osKernelGetInfo.
 
 \div{mod} 
 \func{osKernelState_t #osKernelGetState (void)}
-\func{int32_t &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; osKernelRunning (void)}
+\func{int32_t &nbsp; &nbsp; &nbsp; &nbsp; osKernelRunning (void)}
 \copybrief{osKernelGetState}
  - The function \b osKernelGetState replaces the RTOS v1 function \b osKernelRunning.
  - Return type changed to \ref osKernelState_t.
@@ -44,7 +44,7 @@ New function #osKernelGetInfo.
 \func{uint32_t #osKernelGetTick (void)}
 \func{uint32_t osKernelSysTick (void)}
 \copybrief{osKernelGetTick}
- - The function \b osKernelGetTick replaced the RTOS v1 function \b osKernelSysTick.
+ - The function \b osKernelGetTick replaces the RTOS v1 function \b osKernelSysTick.
 
 \enddiv
 
@@ -77,11 +77,12 @@ New function.
 New function.
 \enddiv
 
-\div{new}
+\div{mod}
 \func{osStatus_t #osKernelStart (void)}
 \func{osStatus &nbsp; osKernelStart (void)}
 \copybrief{osKernelStart}
-Return type changed to \ref osStatus_t.
+ - Return type changed to \ref osStatus_t.
+
 \enddiv
 
 \div{new}
@@ -234,7 +235,7 @@ Refer to \ref CMSIS_RTOS_Wait for details.
 
 \div{mod}
 \func{osStatus_t #osDelayUntil (uint64_t millisec)}
-\func{osStatus &nbsp; osSemaphoreRelease (osSemaphoreId semaphore_id)}
+\func{osStatus &nbsp; osDelayUntil (uint64_t millisec)}
 \copybrief{osDelayUntil}
  - The return type changed to #osStatus_t. 
 
@@ -252,10 +253,10 @@ Refer to \ref CMSIS_RTOS_TimerMgmt for details.
 
 \div{mod}
 \func{osStatus_t #osTimerDelete (osTimerId_t timer_id)}
-\func{osStatus &nbsp; osSemaphoreRelease (osSemaphoreId semaphore_id)}
+\func{osStatus &nbsp; osTimerDelete (osTimerId timer_id)}
 \copybrief{osTimerDelete}
  - The return type changed to #osStatus_t. 
- - The parameter type has changed to #osSemaphoreId_t.
+ - The parameter type has changed to #osTimerId_t.
 
 \enddiv
 
@@ -390,7 +391,7 @@ New function.
 
 \section mig_threadFlags Thread Flags
 \details
-New section to synchronize threads using flags. Thread flags and the more flexible \ref mig_eventFlags are replacing the RTOS v1 <b>Signal Events</b>.
+New section to synchronize threads using flags. Thread flags and the more flexible \ref mig_eventFlags are replacing the RTOS v1 <b>Signal Events</b>. Refer to \ref mig_signalEvents for a list of deprecated functions.
 Refer to \ref CMSIS_RTOS_ThreadFlagsMgmt for details.
 
 \div{new}
@@ -425,7 +426,7 @@ New function.
 
 \div{mod}
 \func{osStatus_t #osMessageQueueGet (osMessageQueueId_t mq_id, void *msg_ptr, uint8_t *msg_prio, uint32_t millisec)}
-\func{osEvent &nbsp; osMessageGet (osMessageQId queue_id, uint32_t millisec)}
+\func{osEvent &nbsp;&nbsp; osMessageGet (osMessageQId queue_id, uint32_t millisec)}
 \copybrief{osMessageQueueGet}
  - The function \b osMessageQueueGet replaces the RTOS v1 function \b osMessageGet.
  - The return type changed to #osStatus_t. 
@@ -463,7 +464,7 @@ New function.
 
 \div{mod}
 \func{osMessageQueueId_t #osMessageQueueNew (uint32_t msg_count, uint32_t msg_size, const osMessageQueueAttr_t *attr)}
-\func{osMessageQId &nbsp; osMessageCreate (const osMessageQDef_t *queue_def, osThreadId thread_id)}
+\func{osMessageQId &nbsp; &nbsp; &nbsp; osMessageCreate (const osMessageQDef_t *queue_def, osThreadId thread_id)}
 \copybrief{osMessageQueueNew}
  - The function \b osMessageQueueNew replaces the RTOS v1 function \b osMessageCreate.
  - The return type changed to #osMessageQueueId_t. 
@@ -498,10 +499,10 @@ New function.
 
 \div{mod}
 \func{void * #osMemoryPoolAlloc (osMemoryPoolId_t mp_id, uint32_t millisec)}
-\func{void * osPoolAlloc  (osPoolId pool_id)} 
+\func{void * osPoolAlloc &nbsp;(osPoolId pool_id)} 
 \func{void * osPoolCAlloc (osPoolId pool_id)} 
 \copybrief{osMemoryPoolAlloc}
- - The function \b osMemoryPoolAlloc replaced both the RTOS v1 functions \b osPoolAlloc and \b osPoolCAlloc.
+ - The function \b osMemoryPoolAlloc replaces both RTOS v1 functions \b osPoolAlloc and \b osPoolCAlloc.
  - The parameter list and types changed.
 
 \enddiv
@@ -515,9 +516,9 @@ New function.
 
 \div{mod}
 \func{osStatus_t #osMemoryPoolFree (osMemoryPoolId_t mp_id, void * block)}
-\func{osStatus &nbsp; osPoolFree(osPoolId pool_id, void * block)} 
+\func{osStatus &nbsp; osPoolFree (osPoolId pool_id, void * block)} 
 \copybrief{osMemoryPoolFree}
- - The function \b osMemoryPoolFree replaced the RTOS v1 function \b osPoolFree.
+ - The function \b osMemoryPoolFree replaces the RTOS v1 function \b osPoolFree.
  - The first parameter type \b osMemoryPoolId_t replaces the ROTS v1 type \b osPoolId.
 
 \enddiv
@@ -552,10 +553,11 @@ New function.
 
 \div{mod}
 \func{osMemoryPoolId_t #osMemoryPoolNew (uint32_t block_count, uint32_t block_size, const osMemoryPoolAttr_t *attr)}
-\func{osPoolId osPoolCreate (const osPoolDef_t * pool_def)}
+\func{osPoolId &nbsp; &nbsp; &nbsp; &nbsp; osPoolCreate (const osPoolDef_t * pool_def)}
 \copybrief{osMemoryPoolGetSpace}
  - The function \b osMemoryPoolNew replaces the RTOS v1 function \b osPoolCreate. 
- - Parameter list and parameter types changed.
+ - The return type changed to #osMemoryPoolId_t.
+ - Parameter list and parameter types have changed.
 
 \enddiv
 
@@ -623,7 +625,7 @@ Refer to \ref CMSIS_RTOS_MutexMgmt for details.
 
 \div{mod}
 \func{osStatus_t #osMutexAcquire (osMutexId_t mutex_id, uint32_t millisec)}
-\func{osStatus osMutexWait (osMutexId mutex_id, uint32_t millisec)}
+\func{osStatus &nbsp; osMutexWait (osMutexId mutex_id, uint32_t millisec)}
 \copybrief{osMutexAcquire}
  - The function \b osMutexAcquire replaces the RTOS v1 function \b osMutexWait.
  - Return type changed to \ref osStatus_t. 

@@ -12,8 +12,8 @@ Events are used to trigger execution states between threads. The event flag mana
 A thread
 - can wait for event flags to be set (using \ref osEventFlagsGet). Using this function, it enters the
   \ref ThreadStates "WAITING" state. The \ref osEventFlagsGet parameter \a flags defines the signals that are required to put the thread back into \b READY state.
-- may set one or more flags in any other given thread (using \ref osEventFlagSet).
-- may clear its own signals or the signals of other threads (using \ref osEventFlagClear).
+- may set one or more flags in any other given thread (using \ref osEventFlagsSet).
+- may clear its own signals or the signals of other threads (using \ref osEventFlagsClear).
 
 When a thread wakes up and resumes execution, its signal flags are automatically cleared. 
 
@@ -26,7 +26,7 @@ Here is a simple example that shows how two thread can communicate with each oth
 The following steps are required to use signals:
 -# In the thread that is supposed to send  a event with id sig1_id, call the wait function:
 \code
-osEventFlagSet (sig1_id, 0x0001); // 
+osEventFlagsSet (sig1_id, 0x0001); // 
 \endcode
 -# In another thread (or threads) that are supposed wait for the event:
 \code
@@ -116,7 +116,7 @@ The /em options parameter specifies the wait condition.
 |\b osFlagsWaitAll   |   Wait for all flags.                                 |
 |\b osFlagsAutoClear |   Clear flags which have been specified to wait for.  |
 
-If osFlagsAutoClear is not set in the options /ref osEventFlagClear can be used to clear flags manually.
+If osFlagsAutoClear is not set in the options /ref osEventFlagsClear can be used to clear flags manually.
 
 When these event flags are already set, the function returns instantly. Otherwise the thread is put into the state \b WAITING. 
 
