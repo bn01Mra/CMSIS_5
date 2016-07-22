@@ -11,8 +11,9 @@ The Generic Wait function group provides means for a time delay and allow to wai
 @{
 */
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/** \def osWaitForever
-Wait forever timeout value. 
+/** 
+\def osWaitForever
+\details
 
 Reference: 
  - \ref osDelay
@@ -41,11 +42,11 @@ to one timer tick less.
 #include "cmsis_os2.h"
  
 void *Thread_1 (void *arg)  {               // Thread function
-  osStatus_t status;                               // capture the return status
-  uint32_t   delayTime;                            // delay time in milliseconds
+  osStatus_t status;                        // capture the return status
+  uint32_t   delayTime;                     // delay time in milliseconds
  
-  delayTime = 1000;                              // delay 1 second
-  status = osDelay (delayTime);                  // suspend thread execution
+  delayTime = 1000;                         // delay 1 second
+  status = osDelay (delayTime);             // suspend thread execution
   if (status != osOK) {
     // handle error code
   }  
@@ -74,11 +75,11 @@ exact time delay depends on the actual time elapsed since the last timer tick.
 #include "cmsis_os2.h"
  
 void *Thread_1 (void *arg)  {               // Thread function
-  osStatus_t status;                               // capture the return status
-  uint32_t   delayTime;                            // delay time in milliseconds
+  osStatus_t status;                        // capture the return status
+  uint32_t   delayTime;                     // delay time in milliseconds
  
-  delayTime = osKernelGetTime() + 2000;          // 2 seconds from now.
-  status = osDelay (delayTime);                  // suspend thread execution
+  delayTime = osKernelGetTime() + 2000;     // 2 seconds from now.
+  status = osDelay (delayTime);             // suspend thread execution
   if (status != osOK) {
     // handle error code
   }  

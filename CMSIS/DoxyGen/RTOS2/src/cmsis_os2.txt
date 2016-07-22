@@ -284,7 +284,7 @@ file that is used throughout a project as shown below:
 #include <cmsis_os2.h>                                         // CMSIS RTOS header file
 
 // Thread definition
-
+ 
 // Pool definition
 
 \endcode
@@ -344,7 +344,7 @@ The following chapters guide you towards implementing the CMSIS-RTOS RTX:
 \page rtosValidation RTOS Validation
 
 \note
-The test suite is available only for RTOS v1.
+The test suite is available only for RTOS v1 API.
 
 ARM offers a <a class=el href="http://www.keil.com/pack" target="_blank">Software Pack</a> for the CMSIS-RTOS Validation.
 The <b>ARM::CMSIS-RTOS_Validation</b> Pack contains the following:
