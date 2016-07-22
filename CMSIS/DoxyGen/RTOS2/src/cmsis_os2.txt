@@ -406,10 +406,10 @@ The CMSIS-RTOS RTX provides several parameters for the thread configuration.
 
 \section stackConfig Configuration of Thread count and Stack Space
 
-\ref osThreadAttr_s is passed to osThreadNew to set the options of a thread.
+\ref osThreadAttr_t is passed to osThreadNew to set the options of a thread.
 
 CMSIS-RTOS RTX defines two methods for defining the stack requirements:
- - when \a *stack_mem in osThreadAttr_s is NULL, a fixed-size memory pool is used to for the thread stack.  In this case \b OS_STKSIZE specifies the stack size for the thread function.
+ - when \a *stack_mem in osThreadAttr_t is NULL, a fixed-size memory pool is used to for the thread stack.  In this case \b OS_STKSIZE specifies the stack size for the thread function.
  - when \a *stack_mem specifies a memory location, the thread stack provided there. The size of this user space is specified with \b stack_size. 
  
 Stack memory for threads is configured either statically by Static Resources - Number of Threads (total). Static memory in the size of Number of Threads * Default Thread Stack size is reserved.
