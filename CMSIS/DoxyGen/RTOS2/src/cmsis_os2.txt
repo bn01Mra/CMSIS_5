@@ -324,19 +324,114 @@ The following chapters guide you towards implementing the CMSIS-RTOS RTX:
 /**
 \page theory_op Theory of Operation
 
+This section describes how CMSIS-RTOS RTX manages the resources of the target system. Many aspects of the CMSIS-RTOS RTX
+kernel can be configured. Information about configuration options is mentioned where applicable.
+
+\section KernelTimer RTX Kernel Timer Tick and Thread Management
+
+By default, CMSIS-RTOS RTX5 uses the Cortex-M
+<a href="http://www.keil.com/support/man/docs/gsac/GSAC_SYSTICKtimer.htm" target="_blank">SysTick</a> timer to generate
+periodic interrupts for the RTX kernel timer tick. CMSIS-RTOS provides \ref CMSIS_RTOS_TimerMgmt functions and several
+CMSIS-RTOS functions have a timeout parameter. This periodic RTX kernel timer tick interrupt is used to derive the required
+time interval. CMSIS-RTOS RTX also provides configuration options for a alternative timer and tick-less operation. Refer to
+\ref timerTick for more information.
+
+To handle timeout and time delays for threads, the CMSIS-RTOS RTX thread management is controlled by the RTX kernel timer
+tick interrupt. The thread context switch itself is implemented in the HAL_CMx.x hardware abstraction layer source files. The
+thread context contains all CPU registers (R0 - R12), the return address (LR), the program counter (PC), and the processor
+status register (xPSR). For the Cortex-M4 FPU and Cortex-M7 FPU the floating point status and registers (S0 - S32, FPSCR) are
+also part of the thread context.
+
+When a thread switch occurs:
+ - the thread context of the current running thread is stored on the local stack of this thread.
+ - the stack pointer is switched to the next running thread.
+ - the thread context of this next running thread is restored and this thread starts to run.
+
+\note 
+- For Cortex-M0, Cortex-M3, Cortex-M4, and Cortex-M7 the thread context requires 64 bytes on the local stack.
+- For Cortex-M4 FPU and Cortex-M7 FPU the thread context requires 200 bytes on the local stack. For devices with Cortex-M4 FPU and Cortex-M7 FPU the default stack space should be increased to a minimum of 300 bytes.
+
+Each thread is provided with an separate stack that holds the thread context and stack space for automatic variables and return addresses for function call nesting. The stack sizes of the RTX threads are flexible configurable as explained in the section \ref threadConfig. RTX even offers a configurable checking for stack overflows and stack utilization. Refer to \ref stackCheck for more information.
+
 */
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \page cre_rtx_proj Create an RTX Project
 
+Example projects using CMSIS-RTOS RTX are available for various development boards. To make use of these examples, you need
+to install a Device Family Pack in µVision and use Pack Installer to open a CMSIS-RTOS2 Blinky project. If you wish to start a CMSIS-RTOS RTX5 from scratch, follow these steps:
+- Create a new project and select a device.
+- In the Manage Run-Time Environment window that opens, select <b>CMSIS\::CORE</b> and <b>CMSIS\::RTOS2 (API)\::Keil RTX5</b>.
+  If the <b>Validation Output</b> requires other components to be present, try to use the \b Resolve button:
+
+   \image html manage_rte_output.png
+
+- Click \b OK. In the \b Project window, you will see the files that have been automatically added to you project, such as
+  \b %RTX_Config.c and the system and startup files:
+
+   \image html project_window.png
+   
+- You can add template files to the project by right-clicking on <b>Source Group 1</b> and selecting
+  <b>Add New Item to 'Source Group 1'</b>. In the new window, click on <b>User Code Template</b>. On the right-hand side
+  you will see all available template files for CMSIS-RTOS RTX:
+  
+   \image html add_item.png
+
+- Finally, \ref configure "configure" RTX to the application's needs using the \b %RTX_Config.c file.
 */
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \page config_rtx Configure RTX
 
+The file \ref RTX_Conf_CM "RTX_Config.c" is used to define the configuration parameters of CMSIS-RTOS RTX. This file must be part of every project that is using the CMSIS-RTOS RTX kernel.
+
+The configuration file uses
+<a class="el" href="http://www.keil.com/pack/doc/CMSIS/Pack/html/_config_wizard.html" target="_blank">Configuration Wizard Annotations</a>.
+Depending on the development tool that is used, this might lead to a more user friendly graphical representation of the settings. The following is a screenshot of the same configuration file using µVision's Configuration Wizard view:
+
+\image html config_wizard.png "RTX_Conf_CM.c in Configuration Wizard View"
+
+The configuration options are explained on these pages:
+- \subpage threadConfig
+
 */
+
+
+/* ========================================================================================================================== */
+/**
+\page threadConfig Thread Configuration
+
+The CMSIS-RTOS RTX provides several parameters for the thread configuration.
+ - \ref stackConfig
+ - \ref stackCheck
+ - \ref processorMode
+
+\section stackConfig Configuration of Thread count and Stack Space
+
+\ref osThreadDef defines a thread function. The parameter \a stacksz specifies thereby the stack requirements of this
+thread function. CMSIS-RTOS RTX defines two methods for defining the stack requirements:
+ - when \a *stack_mem in osThreadAttr_s is NULL, a fixed-size memory pool is used to for the thread stack.  In this case \b OS_STKSIZE specifies the stack size for the thread function.
+ - when \a *stack_mem specifies a memory location, the thread stack provided there. The size of this user space is specified with \b stack_size. 
+ 
+Stack memory for threads is configured either statically by Static Resources - Number of Threads (total). Static memory in the size of Number of Threads * Default Thread Stack size is reserved.
+Alternatively the memory is allocated on demand from the Dynamic Resources pool (configured by System Configuration - Dynamic Resources - Memory size [bytes] for Stack).
+
+The CMSIS-RTOS RTX kernel uses a separate stack for each thread it creates. However, before the kernel is started by the\ref osKernelInitialize() function, the main stack size that is configured in the file startup_<i>device</i>.s is used.
+
+Main stack is also used when:
+- the user application calls the majority of RTX functions from Thread mode (ending up in an SVC call)
+- running from handlers (user interrupt of exception handlers like SVCm PendSV, Faults, etc.)
+
+|Name                                                               |\#define         |Description|
+|-------------------------------------------------------------------|-----------------|-----------|
+|Number of concurrent running user threads                          |\c OS_THREAD_NUM    |Indicates the maximum number of threads that will run at the same time (including main).|
+|Default Thread stack size [bytes]                                  |\c OS_STACK_SIZE    |Specifies the default stack size (in words) for threads that are defined with osThreadDef \a stacksz = 0.|
+|Number of threads with user-provided stack size                    |\c OS_THREAD_USER_STACK_NUM    |Indicates the number of threads that are defined with \ref osThreadDef \a stacksz != 0 (excluding main). \a stacksz specifies the stack size requirement of that thread.|
+|\ref stackCheck                                            |\c OS_STACK_CHECK   |If a stack overflow is detected at a thread switch, the function \b os_error with error code = 1 is called.  By default, this function is implemented as endless loop and will practically stop code execution.|
+|\ref stackUsage                                              |\c OS_STACK_WATERMARK    |Initializes the thread stack with a watermark pattern that can be used to determine the maximum stack usage within each thread.|
+|\ref processorMode                                |\c OS_PRIVILEGE_MODE    |Controls the processor mode (privileged/unprivileged)|
 
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
