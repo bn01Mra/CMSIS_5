@@ -3,7 +3,7 @@
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 //  ==== Event Flag Management ====
 /** 
-\addtogroup CMSIS_RTOS_EventFlags Event Flag Objects
+\addtogroup CMSIS_RTOS_EventFlags Event Flags
 \ingroup CMSIS_RTOS
 \brief Create events using flags.
 \details 
@@ -129,3 +129,25 @@ Delete an event flag object.  The function releases internal memory obtained for
 This can cause starvation of threads that are waiting for flags of this event object.
 */
 /// @}
+
+// these struct members must stay outside the group to avoid double entries in documentation
+/**
+\var osEventFlagsAttr_t::attr_bits
+\details
+No attributes available.
+
+\var osEventFlagsAttr_t::cb_mem
+\details
+Pointer to a memory location for the event object. This can optionally be used for custom memory management systems. 
+Specify \token{NULL} to use the kernel memory management.
+
+
+\var osEventFlagsAttr_t::cb_size
+\details
+The size of the memory block passed with \ref cb_mem. Must be the size of an event object or larger.
+
+\var osEventFlagsAttr_t::name
+\details
+String with a human readable name of the event object.
+
+*/

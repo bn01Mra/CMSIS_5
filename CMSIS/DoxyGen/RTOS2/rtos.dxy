@@ -196,7 +196,7 @@ SEPARATE_MEMBER_PAGES  = NO
 # The TAB_SIZE tag can be used to set the number of spaces in a tab. 
 # Doxygen uses this value to replace tabs by spaces in code fragments.
 
-TAB_SIZE               = 8
+TAB_SIZE               = 9
 
 # This tag can be used to specify a number of aliases that acts 
 # as commands in the documentation. An alias has the form "name=value". 
@@ -205,7 +205,12 @@ TAB_SIZE               = 8
 # will result in a user-defined paragraph with heading "Side Effects:". 
 # You can put \n's in the value part of an alias to insert newlines.
 
-ALIASES                = "token{1}=<span class=\"XML-Token\">\1</span>"
+ALIASES                = "token{1}=<span class=\"XML-Token\">\1</span>" \
+                         "div{1}=<hr><div class=\"\1\">" \
+                         "enddiv= </div>" \
+                         "func{1}=<kbd>\1</kbd> <br>" \
+                         "copybrief{1}=<br> \copybrief \1 <br>" \
+                         "none=\em none <br>"
 
 # This tag can be used to specify a number of word-keyword mappings (TCL only). 
 # A mapping has the form "name=value". For example adding 
@@ -680,14 +685,15 @@ INPUT                  = . \
                          ./src/cmsis_os2.txt \
                          ./src/cmsis_os2_Kernel.txt \
                          ./src/cmsis_os2_Thread.txt \
-						 ./src/cmsis_os2_ThreadFlags.txt \
+                         ./src/cmsis_os2_Wait.txt \
+                         ./src/cmsis_os2_ThreadFlags.txt \
                          ./src/cmsis_os2_Event.txt \
-                         ./src/cmsis_os2_MemPool.txt \
                          ./src/cmsis_os2_Mutex.txt \
-                         ./src/cmsis_os2_Message.txt \
                          ./src/cmsis_os2_Sema.txt \
                          ./src/cmsis_os2_Timer.txt \
-                         ./src/cmsis_os2_Wait.txt \
+                         ./src/cmsis_os2_MemPool.txt \
+                         ./src/cmsis_os2_Message.txt \
+                         ./src/cmsis_os2_Status.txt \
                          ./src/cmsis_os2_Migration.txt
 
 # This tag can be used to specify the character encoding of the source files 
@@ -780,7 +786,9 @@ EXCLUDE_SYMBOLS        =
 # directories that contain example code fragments that are included (see 
 # the \include command).
 
-EXAMPLE_PATH           = ..\..\RTOS2
+EXAMPLE_PATH           = ../../RTOS2/Include \
+                         ../../RTOS2 \
+                         ../../RTOS2/Template
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the 
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp 
@@ -981,7 +989,8 @@ HTML_EXTRA_STYLESHEET  = ../Doxygen_Templates/cmsis.css
 
 HTML_EXTRA_FILES       = ../Doxygen_Templates/tabs.css \
                          ../Doxygen_Templates/tab_topnav.png \
-                         ../Doxygen_Templates/printComponentTabs.js
+                         ../Doxygen_Templates/printComponentTabs.js \
+                         ../Doxygen_Templates/search.css
 
 # The HTML_COLORSTYLE_HUE tag controls the color of the HTML output. 
 # Doxygen will adjust the colors in the style sheet and background images 
