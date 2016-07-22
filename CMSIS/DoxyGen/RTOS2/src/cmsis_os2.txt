@@ -492,9 +492,23 @@ Test Result: PASSED
 /* ========================================================================================================================== */
 // Group creation for Reference 
 /** 
+\addtogroup CMSIS_RTOS1 CMSIS-RTOS API v1
+\brief This section describes the CMSIS-RTOS API v1. 
+\details 
+The CMSIS-RTOS is a generic API layer that interfaces to an existing RTOS kernel.
+
+CMSIS-RTOS API v2 provides an translation layer for the
+<a class="el" href="../../RTOS/html/index.html">CMSIS-RTOS API v1</a> that simplifies migration.
+
+Refer to the <a class="el" href="../../RTOS/html/modules.html">Reference</a> guide of the CMSIS-RTOS API v1 for details.
+*/
+
+// Group creation for Reference 
+/** 
 \addtogroup CMSIS_RTOS CMSIS-RTOS API v2
 \brief This section describes the CMSIS-RTOS API v2. 
 \details 
 The CMSIS-RTOS is a generic API layer that interfaces to an existing RTOS kernel.
 
 */
+
