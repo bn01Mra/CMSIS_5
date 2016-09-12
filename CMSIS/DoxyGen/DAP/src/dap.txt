@@ -68,7 +68,7 @@ CMSIS-DAP compliant Debug Units must be validated using the scripts provided in 
 
 */
 /** 
-\page rev_hist_dap Revision History of CMSIS-DAP
+\page dap_revisionHistory Revision History of CMSIS-DAP
 
 <table>
     <tr>
