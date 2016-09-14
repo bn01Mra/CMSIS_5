@@ -1,9 +1,9 @@
 var group__i2c__interface__gr =
 [
-    [ "I2C Events", "group___i2_c__events.html", "group___i2_c__events" ],
+    [ "I2C Events", "group__I2C__events.html", "group__I2C__events" ],
     [ "I2C Control Codes", "group__i2c__control__gr.html", "group__i2c__control__gr" ],
     [ "I2C Address Flags", "group__i2c__address__flags.html", "group__i2c__address__flags" ],
-    [ "ARM_DRIVER_I2C", "group__i2c__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___i2_c", [
+    [ "ARM_DRIVER_I2C", "group__i2c__interface__gr.html#structARM__DRIVER__I2C", [
       [ "GetVersion", "group__i2c__interface__gr.html#a8834b281da48583845c044a81566c1b3", null ],
       [ "GetCapabilities", "group__i2c__interface__gr.html#a5dfa74ca82e0af995d43da61e08c3103", null ],
       [ "Initialize", "group__i2c__interface__gr.html#ab0480980f67e0ebe0461ccea7873a65b", null ],
@@ -17,10 +17,10 @@ var group__i2c__interface__gr =
       [ "Control", "group__i2c__interface__gr.html#a6e0f47a92f626a971c5197fca6545505", null ],
       [ "GetStatus", "group__i2c__interface__gr.html#ad4b47653bc47cdb02965dd311e88b96a", null ]
     ] ],
-    [ "ARM_I2C_CAPABILITIES", "group__i2c__interface__gr.html#struct_a_r_m___i2_c___c_a_p_a_b_i_l_i_t_i_e_s", [
+    [ "ARM_I2C_CAPABILITIES", "group__i2c__interface__gr.html#structARM__I2C__CAPABILITIES", [
       [ "address_10_bit", "group__i2c__interface__gr.html#a4ffaaf168a9f43e98d710abff5861ed5", null ]
     ] ],
-    [ "ARM_I2C_STATUS", "group__i2c__interface__gr.html#struct_a_r_m___i2_c___s_t_a_t_u_s", [
+    [ "ARM_I2C_STATUS", "group__i2c__interface__gr.html#structARM__I2C__STATUS", [
       [ "busy", "group__i2c__interface__gr.html#a50c88f3c1d787773e2ac1b59533f034a", null ],
       [ "mode", "group__i2c__interface__gr.html#a6b29e4f37f4482274af785ad5ffe96a7", null ],
       [ "direction", "group__i2c__interface__gr.html#a2148ffb99828aeaced6a5655502434ac", null ],

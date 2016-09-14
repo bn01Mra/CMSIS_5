@@ -1,10 +1,10 @@
 var group__can__interface__gr =
 [
     [ "Status Error Codes", "group__can__status__code__ctrls.html", "group__can__status__code__ctrls" ],
-    [ "CAN Unit Events", "group___c_a_n__unit__events.html", "group___c_a_n__unit__events" ],
-    [ "CAN Object Events", "group___c_a_n__events.html", "group___c_a_n__events" ],
+    [ "CAN Unit Events", "group__CAN__unit__events.html", "group__CAN__unit__events" ],
+    [ "CAN Object Events", "group__CAN__events.html", "group__CAN__events" ],
     [ "CAN Control Codes", "group__can__control.html", "group__can__control" ],
-    [ "ARM_DRIVER_CAN", "group__can__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___c_a_n", [
+    [ "ARM_DRIVER_CAN", "group__can__interface__gr.html#structARM__DRIVER__CAN", [
       [ "GetVersion", "group__can__interface__gr.html#a8834b281da48583845c044a81566c1b3", null ],
       [ "GetCapabilities", "group__can__interface__gr.html#a62c0c62c2bf482c000b1b2a2c817a96f", null ],
       [ "Initialize", "group__can__interface__gr.html#a322b44b8e757887616b75035a8fd7027", null ],
@@ -21,7 +21,7 @@ var group__can__interface__gr =
       [ "Control", "group__can__interface__gr.html#a6e0f47a92f626a971c5197fca6545505", null ],
       [ "GetStatus", "group__can__interface__gr.html#ad60ff24982cdb3ce38b8c17e0b4f0acc", null ]
     ] ],
-    [ "ARM_CAN_CAPABILITIES", "group__can__interface__gr.html#struct_a_r_m___c_a_n___c_a_p_a_b_i_l_i_t_i_e_s", [
+    [ "ARM_CAN_CAPABILITIES", "group__can__interface__gr.html#structARM__CAN__CAPABILITIES", [
       [ "num_objects", "group__can__interface__gr.html#a69bd1a164443cf6f501489f4d31f4681", null ],
       [ "reentrant_operation", "group__can__interface__gr.html#ae0514834750c7452431717a881471e2b", null ],
       [ "fd_mode", "group__can__interface__gr.html#a15d22d5906d419ed1a7ca0968be00a04", null ],
@@ -30,13 +30,13 @@ var group__can__interface__gr =
       [ "internal_loopback", "group__can__interface__gr.html#af19cdbb26d3496ed7dd63a59a7c7711f", null ],
       [ "external_loopback", "group__can__interface__gr.html#a2b76df7e4bfbdd9866cc906415e626c9", null ]
     ] ],
-    [ "ARM_CAN_STATUS", "group__can__interface__gr.html#struct_a_r_m___c_a_n___s_t_a_t_u_s", [
+    [ "ARM_CAN_STATUS", "group__can__interface__gr.html#structARM__CAN__STATUS", [
       [ "unit_state", "group__can__interface__gr.html#a96ec94acab56690b3801e3c5fbd09fa2", null ],
       [ "last_error_code", "group__can__interface__gr.html#a2171ea8dff5e4b54e84728aa134854b6", null ],
       [ "tx_error_count", "group__can__interface__gr.html#a8941505f6f3ebd69825c4382184c580f", null ],
       [ "rx_error_count", "group__can__interface__gr.html#ab7e8b863b379b786ad1af935aa3ef2e8", null ]
     ] ],
-    [ "ARM_CAN_MSG_INFO", "group__can__interface__gr.html#struct_a_r_m___c_a_n___m_s_g___i_n_f_o", [
+    [ "ARM_CAN_MSG_INFO", "group__can__interface__gr.html#structARM__CAN__MSG__INFO", [
       [ "id", "group__can__interface__gr.html#abaabdc509cdaba7df9f56c6c76f3ae19", null ],
       [ "rtr", "group__can__interface__gr.html#a1f32fc9e5d3b33babf5905140e7a53af", null ],
       [ "edl", "group__can__interface__gr.html#ab6883964c9d4bdf60616684e8d2459df", null ],
@@ -44,7 +44,7 @@ var group__can__interface__gr =
       [ "esi", "group__can__interface__gr.html#ada78e3124de6adf5a5d212f9ebc4bbe0", null ],
       [ "dlc", "group__can__interface__gr.html#a811fbb0cb2c2263b1a7440a7e9d78239", null ]
     ] ],
-    [ "ARM_CAN_OBJ_CAPABILITIES", "group__can__interface__gr.html#struct_a_r_m___c_a_n___o_b_j___c_a_p_a_b_i_l_i_t_i_e_s", [
+    [ "ARM_CAN_OBJ_CAPABILITIES", "group__can__interface__gr.html#structARM__CAN__OBJ__CAPABILITIES", [
       [ "tx", "group__can__interface__gr.html#a9706173b2ed538efeb5ee4a952e2272f", null ],
       [ "rx", "group__can__interface__gr.html#a895532773c3204e1538191f155c7bac8", null ],
       [ "rx_rtr_tx_data", "group__can__interface__gr.html#a8a41139926d7c032247458d055071fda", null ],

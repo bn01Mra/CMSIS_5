@@ -1,8 +1,8 @@
 var group__storage__interface__gr =
 [
-    [ "Use of Storage APIs", "group___storage_driver_functions.html", null ],
-    [ "Sample Use of Storage Driver", "group___sample_use_of_storage_driver.html", null ],
-    [ "ARM_STORAGE_BLOCK_ATTRIBUTES", "group__storage__interface__gr.html#struct_a_r_m___s_t_o_r_a_g_e___b_l_o_c_k___a_t_t_r_i_b_u_t_e_s", [
+    [ "Use of Storage APIs", "group__StorageDriverFunctions.html", null ],
+    [ "Sample Use of Storage Driver", "group__SampleUseOfStorageDriver.html", null ],
+    [ "ARM_STORAGE_BLOCK_ATTRIBUTES", "group__storage__interface__gr.html#structARM__STORAGE__BLOCK__ATTRIBUTES", [
       [ "erasable", "group__storage__interface__gr.html#ab350afb2119388ebd3f096bd24f019ef", null ],
       [ "programmable", "group__storage__interface__gr.html#a7f4aebaeeb818b0e2a0592f96559fa1b", null ],
       [ "executable", "group__storage__interface__gr.html#a910da8e2e909faab1d32cca7f8b05656", null ],
@@ -11,12 +11,12 @@ var group__storage__interface__gr =
       [ "erase_unit", "group__storage__interface__gr.html#aac21d3f798c9fcad415b99cf4157935a", null ],
       [ "protection_unit", "group__storage__interface__gr.html#ae319384dfb356cbb0b08ccbf8c04a590", null ]
     ] ],
-    [ "ARM_STORAGE_BLOCK", "group__storage__interface__gr.html#struct_a_r_m___s_t_o_r_a_g_e___b_l_o_c_k", [
+    [ "ARM_STORAGE_BLOCK", "group__storage__interface__gr.html#structARM__STORAGE__BLOCK", [
       [ "addr", "group__storage__interface__gr.html#a0e89cf6b9f6cd3125470b1bed2b823df", null ],
       [ "size", "group__storage__interface__gr.html#af931a8871310b4dad23f0f0b0f623560", null ],
       [ "attributes", "group__storage__interface__gr.html#ade62c905888479b4f6d078d45cec5830", null ]
     ] ],
-    [ "ARM_STORAGE_INFO", "group__storage__interface__gr.html#struct_a_r_m___s_t_o_r_a_g_e___i_n_f_o", [
+    [ "ARM_STORAGE_INFO", "group__storage__interface__gr.html#structARM__STORAGE__INFO", [
       [ "total_storage", "group__storage__interface__gr.html#a4b14ce1ca2ceea5ce49e81348c5b38f6", null ],
       [ "program_unit", "group__storage__interface__gr.html#a483c41066757e2865bf3a27a2a627a54", null ],
       [ "optimal_program_unit", "group__storage__interface__gr.html#a407e16dc7e4da08cea7785efeebd9b6d", null ],
@@ -28,7 +28,7 @@ var group__storage__interface__gr =
       [ "reserved", "group__storage__interface__gr.html#aa43c4c21b173ada1b6b7568956f0d650", null ],
       [ "security", "group__storage__interface__gr.html#aee43dd20848f45fe05efc10a8198817a", null ]
     ] ],
-    [ "ARM_DRIVER_STORAGE", "group__storage__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___s_t_o_r_a_g_e", [
+    [ "ARM_DRIVER_STORAGE", "group__storage__interface__gr.html#structARM__DRIVER__STORAGE", [
       [ "GetVersion", "group__storage__interface__gr.html#a8834b281da48583845c044a81566c1b3", null ],
       [ "GetCapabilities", "group__storage__interface__gr.html#abbfb3aa4b6adb4407de79221bf12cc55", null ],
       [ "Initialize", "group__storage__interface__gr.html#a4a126668a113ce450b0d831c74199b23", null ],
@@ -44,32 +44,31 @@ var group__storage__interface__gr =
       [ "GetNextBlock", "group__storage__interface__gr.html#adda93f4d74519247517f036c4551dd13", null ],
       [ "GetBlock", "group__storage__interface__gr.html#af43edebfb5463d22ffeda6de20e1d1bd", null ]
     ] ],
-    [ "ARM_STORAGE_CAPABILITIES", "group__storage__interface__gr.html#struct_a_r_m___s_t_o_r_a_g_e___c_a_p_a_b_i_l_i_t_i_e_s", [
+    [ "ARM_STORAGE_CAPABILITIES", "group__storage__interface__gr.html#structARM__STORAGE__CAPABILITIES", [
       [ "asynchronous_ops", "group__storage__interface__gr.html#a15ade4ca762bc6ce72d435a16febb4cc", null ],
       [ "erase_all", "group__storage__interface__gr.html#a63882f6a571f20aad1b5b3542cdaafa1", null ],
       [ "reserved", "group__storage__interface__gr.html#aa43c4c21b173ada1b6b7568956f0d650", null ]
     ] ],
-    [ "ARM_STORAGE_STATUS", "group__storage__interface__gr.html#struct_a_r_m___s_t_o_r_a_g_e___s_t_a_t_u_s", [
+    [ "ARM_STORAGE_STATUS", "group__storage__interface__gr.html#structARM__STORAGE__STATUS", [
       [ "busy", "group__storage__interface__gr.html#a50c88f3c1d787773e2ac1b59533f034a", null ],
       [ "error", "group__storage__interface__gr.html#aa8d183302fdfa4a6892f1d80300cdb32", null ]
     ] ],
     [ "ARM_Storage_Callback_t", "group__storage__interface__gr.html#ga4b290224fea782e6d2ad06f541b28a98", null ],
     [ "ARM_STORAGE_OPERATION", "group__storage__interface__gr.html#ga3a9277f89946d61c41b22da72e3eef7c", [
-      [ "ARM_STORAGE_OPERATION_GET_VERSION", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7cac82e2ca0f9b7ec94e24ae56c45f12f8c", null ],
-      [ "ARM_STORAGE_OPERATION_GET_CAPABILITIES", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca314621ae4384fef7094d8724d59b65c4", null ],
-      [ "ARM_STORAGE_OPERATION_INITIALIZE", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7caca3985b874bf393dc2e448b339668971", null ],
-      [ "ARM_STORAGE_OPERATION_UNINITIALIZE", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7cab9488e567ad58b16c5df2637df3902e9", null ],
-      [ "ARM_STORAGE_OPERATION_POWER_CONTROL", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca213a74ac5a692a80f17fd6d8e6565e05", null ],
-      [ "ARM_STORAGE_OPERATION_READ_DATA", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca177812f3cb27c413473d94ebe9480454", null ],
-      [ "ARM_STORAGE_OPERATION_PROGRAM_DATA", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca586b4774a7a092d1932d3415cc42abb0", null ],
-      [ "ARM_STORAGE_OPERATION_ERASE", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7cab52a1d10b8087452fd97af8cdb9a6f75", null ],
-      [ "ARM_STORAGE_OPERATION_ERASE_ALL", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca60a0511bd5e32db2a22d3ab2023a601e", null ],
-      [ "ARM_STORAGE_OPERATION_GET_STATUS", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca7c595cd3c439753efe0a0b17efd7bb7f", null ],
-      [ "ARM_STORAGE_OPERATION_GET_INFO", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca0fe0ef7c0a9e69d053a0419282248f40", null ],
-      [ "ARM_STORAGE_OPERATION_RESOLVE_ADDRESS", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca3292512d0222e4119d0cdf77de1508df", null ],
-      [ "ARM_STORAGE_OPERATION_GET_FIRST_BLOCK", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca4c1aa49882da357e2e1e6d250089fd1b", null ],
-      [ "ARM_STORAGE_OPERATION_GET_NEXT_BLOCK", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca9bfab6ee9caa3ace32338d4ef2d856f5", null ],
-      [ "ARM_STORAGE_OPERATION_GET_BLOCK", "_driver___storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7cac75096931c3d29af1029f25fc44e7523", null ]
+      [ "ARM_STORAGE_OPERATION_GET_VERSION", "Driver__Storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7cac82e2ca0f9b7ec94e24ae56c45f12f8c", null ],
+      [ "ARM_STORAGE_OPERATION_GET_CAPABILITIES", "Driver__Storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca314621ae4384fef7094d8724d59b65c4", null ],
+      [ "ARM_STORAGE_OPERATION_INITIALIZE", "Driver__Storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7caca3985b874bf393dc2e448b339668971", null ],
+      [ "ARM_STORAGE_OPERATION_UNINITIALIZE", "Driver__Storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7cab9488e567ad58b16c5df2637df3902e9", null ],
+      [ "ARM_STORAGE_OPERATION_POWER_CONTROL", "Driver__Storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca213a74ac5a692a80f17fd6d8e6565e05", null ],
+      [ "ARM_STORAGE_OPERATION_READ_DATA", "Driver__Storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca177812f3cb27c413473d94ebe9480454", null ],
+      [ "ARM_STORAGE_OPERATION_PROGRAM_DATA", "Driver__Storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca586b4774a7a092d1932d3415cc42abb0", null ],
+      [ "ARM_STORAGE_OPERATION_ERASE", "Driver__Storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7cab52a1d10b8087452fd97af8cdb9a6f75", null ],
+      [ "ARM_STORAGE_OPERATION_ERASE_ALL", "Driver__Storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca60a0511bd5e32db2a22d3ab2023a601e", null ],
+      [ "ARM_STORAGE_OPERATION_GET_STATUS", "Driver__Storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca7c595cd3c439753efe0a0b17efd7bb7f", null ],
+      [ "ARM_STORAGE_OPERATION_GET_INFO", "Driver__Storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca0fe0ef7c0a9e69d053a0419282248f40", null ],
+      [ "ARM_STORAGE_OPERATION_RESOLVE_ADDRESS", "Driver__Storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca3292512d0222e4119d0cdf77de1508df", null ],
+      [ "ARM_STORAGE_OPERATION_GET_NEXT_BLOCK", "Driver__Storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7ca9bfab6ee9caa3ace32338d4ef2d856f5", null ],
+      [ "ARM_STORAGE_OPERATION_GET_BLOCK", "Driver__Storage_8h.html#ga3a9277f89946d61c41b22da72e3eef7cac75096931c3d29af1029f25fc44e7523", null ]
     ] ],
     [ "ARM_Storage_GetVersion", "group__storage__interface__gr.html#gaf28193431b1a2ee64b22bfb36aed27e3", null ],
     [ "ARM_Storage_GetCapabilities", "group__storage__interface__gr.html#ga8378b3901dfe76d8f31728a50e10dae2", null ],

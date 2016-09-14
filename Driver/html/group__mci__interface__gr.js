@@ -5,7 +5,7 @@ var group__mci__interface__gr =
     [ "MCI Send Command Flags", "group__mci__send__command__flags__ctrls.html", "group__mci__send__command__flags__ctrls" ],
     [ "MCI Transfer Controls", "group__mci__transfer__ctrls.html", "group__mci__transfer__ctrls" ],
     [ "MCI Card Power Controls", "group__mci__card__power__ctrls.html", "group__mci__card__power__ctrls" ],
-    [ "ARM_DRIVER_MCI", "group__mci__interface__gr.html#struct_a_r_m___d_r_i_v_e_r___m_c_i", [
+    [ "ARM_DRIVER_MCI", "group__mci__interface__gr.html#structARM__DRIVER__MCI", [
       [ "GetVersion", "group__mci__interface__gr.html#a8834b281da48583845c044a81566c1b3", null ],
       [ "GetCapabilities", "group__mci__interface__gr.html#a5648b4224e0346ba5e20fefc7e83aee8", null ],
       [ "Initialize", "group__mci__interface__gr.html#ae51ec82c310aff0edda6220f9ebfd822", null ],
@@ -20,7 +20,7 @@ var group__mci__interface__gr =
       [ "Control", "group__mci__interface__gr.html#a6e0f47a92f626a971c5197fca6545505", null ],
       [ "GetStatus", "group__mci__interface__gr.html#a2dc63353d6869c0ea2d3d29155c88b49", null ]
     ] ],
-    [ "ARM_MCI_CAPABILITIES", "group__mci__interface__gr.html#struct_a_r_m___m_c_i___c_a_p_a_b_i_l_i_t_i_e_s", [
+    [ "ARM_MCI_CAPABILITIES", "group__mci__interface__gr.html#structARM__MCI__CAPABILITIES", [
       [ "cd_state", "group__mci__interface__gr.html#af47e73979b028c86c7c1fbe39b095140", null ],
       [ "cd_event", "group__mci__interface__gr.html#abcabfa504d3226c723d9bf5debe2f164", null ],
       [ "wp_state", "group__mci__interface__gr.html#a02df0162d3a653c36158a7b6a76f6175", null ],
@@ -51,7 +51,7 @@ var group__mci__interface__gr =
       [ "ccs", "group__mci__interface__gr.html#a13c956ba993083f1e59379968e2badbe", null ],
       [ "ccs_timeout", "group__mci__interface__gr.html#a9739c230a13b46482feb5475d257e482", null ]
     ] ],
-    [ "ARM_MCI_STATUS", "group__mci__interface__gr.html#struct_a_r_m___m_c_i___s_t_a_t_u_s", [
+    [ "ARM_MCI_STATUS", "group__mci__interface__gr.html#structARM__MCI__STATUS", [
       [ "command_active", "group__mci__interface__gr.html#aa22ef7c7597e90835bd67d5795ba757e", null ],
       [ "command_timeout", "group__mci__interface__gr.html#a56e426979c3872254c156e9ae7eead5b", null ],
       [ "command_error", "group__mci__interface__gr.html#afca11cd2ce661c67455a6d75328848cc", null ],
